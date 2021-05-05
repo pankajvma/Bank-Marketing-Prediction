@@ -25,6 +25,7 @@
 
   <div id="service">
     <div class="overlay">
+
       <div class="term">
         <h1>Predict term deposit</h1>
         <form action="{{ url_for('predict')}}" method="post">
@@ -199,21 +200,23 @@
 
         </div>
 
+        <div id="outcome">
+          <div class="result">
+            Result
+          </div>   
+  
+          <div>
+            {{ prediction_text }}
+          </div>      
+          
+        </div>
+
       </div>
 
 
-      <div id="outcome">
-        <div class="result">
-          Result
-        </div>   
-
-        <div>
-          {{ prediction_text }}
-        </div>      
-        
-      </div>
-
+      
     </div>
+    
   </div>
 </body>
 
