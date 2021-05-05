@@ -10,8 +10,13 @@
 
   <style>
     .term {
-      display: {{display_none}}
+      display: {{display_term}}
     }
+
+    .report{
+      display: {{display_report}}
+    }
+
   </style>
 
 </head>
@@ -194,10 +199,20 @@
 
         </div>
 
-      <label id="outcome">{{ prediction_text }}</label>
-        
-
       </div>
+
+
+      <div id="outcome">
+        <div class="result">
+          Result
+        </div>   
+
+        <div>
+          {{ prediction_text }}
+        </div>      
+        
+      </div>
+
     </div>
   </div>
 </body>

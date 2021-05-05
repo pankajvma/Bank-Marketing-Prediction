@@ -17,9 +17,30 @@ def get_full_data(form_input):
 
     return model_input
 
+def get_report(int_features):
+    age, edu_ind, bal, house_ind, loan_ind, dur, co_count, days_passed, job_ind, marital_ind = int_features
+
+    edu = ['Primary', 'Secondary', 'Tertiary']
+    house = ['No', 'Yes']
+    loan = ['No', 'Yes']
+    job = ['admin', 'blue-collar', 'entrepreneur', 'housemaid', 'management', 
+            'retired', 'self-employed', 'services', 'student', 'technician', 'unemployed']
+
+    marital = ['Divorced', 'Married', 'Single']
+
+    edu = edu[edu_ind-1]
+    house = house[house_ind]
+    loan = loan[loan_ind]
+    job = job[job_ind]
+    marital = marital[marital_ind]
+
+    report = [age, edu, bal, house, loan, dur, co_count, days_passed, job, marital]
+
+    return report
+
 @app.route('/')
 def home():
-    return render_template('index.html')
+    return render_template('index.html', display_report = "none")
 
 @app.route('/predict',methods=['POST'])
 def predict():
@@ -37,29 +58,16 @@ def predict():
     final_features = [np.array(all_int_features)]
     prediction = model.predict(final_features)
 
-    edu = ['Primary', 'Secondary', 'Tertiary']
-    house = ['No', 'Yes']
-    loan = ['No', 'Yes']
-    job = ['admin', 'blue-collar', 'entrepreneur', 'housemaid', 'management', 
-            'retired', 'self-employed', 'services', 'student', 'technician', 'unemployed']
 
-    marital = ['Divorced', 'Married', 'Single']
-
-    age, edu_ind, bal, house_ind, loan_ind, dur, co_count, days_passed, job_ind, marital_ind = int_features
-
-    edu = edu[edu_ind]
-    house = house[house_ind]
-    loan = loan[loan_ind]
-    job = job[job_ind]
-    marital = marital[marital_ind]
+    age, edu, bal, house, loan, dur, co_count, days_passed, job, marital = get_report(int_features)
 
     output = 'is more likely to' if prediction == 1 else 'might not'
 
     return render_template('index.html', age_text = age, education_text = edu, balance_text = bal, 
                             housing_text = house, loan_text = loan, duration_text = dur, contacted_text = co_count, 
-                            days_passed_text = days_passed, job_text = job, marital_text = marital,
+                            days_passed_text = days_passed, job_text = job.title(), marital_text = marital,
                             prediction_text= f'This customer {output} Subscribe to the Term Deposit.',
-                            display_none = "none")
+                            display_term = "none", display_report="block")
 
 
 if __name__ == "__main__":
