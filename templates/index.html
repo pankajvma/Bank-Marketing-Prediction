@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Marketing</title>
+  <!-- custom css -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
+
+  <style>
+    .term {
+      display: {{display_none}}
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div id="service">
+    <div class="overlay">
+      <div class="term">
+        <h1>Predict term deposit</h1>
+        <form action="{{ url_for('predict')}}" method="post">
+
+
+          <div><input class="form-control" type="number" id="age_value" name="age" placeholder="Age" required="required"
+              min="18" max="99" maxlength=3 />
+          </div>
+
+          <div><select class="form-control" name="education" id="education_value" required="required">
+              <option value="">Education</option>
+              <option value="1">Primary</option>
+              <option value="2">Secondary</option>
+              <option value="3">Tertiary</option>
+            </select></div>
+
+          <div><input class="form-control" type="number" name="balance" id="balance_value" placeholder="Balance"
+              required="required" />
+          </div>
+
+
+          <div><select class="form-control" name="housing" id="housing_value" required="required">
+              <option class='top' value="">Housing Loan</option>
+              <option value="0">No</option>
+              <option value="1">Yes</option>
+            </select></div>
+
+          <div><select class="form-control" name="loan" id="loan_value" required="required">
+              <option value="">Loan</option>
+              <option value="0">No</option>
+              <option value="1">Yes</option>
+            </select></div>
+
+          <div>
+            <input class="form-control" type="number" name="duration" id="duration_value" placeholder="Call Duration"
+              required="required" min="1" max="1500" />
+          </div>
+
+          <div><input class="form-control" type="number" name="contacted" id="contacted_value"
+              placeholder="Contact Count" required="required" min="1" max="20" /></div>
+
+          <div><input class="form-control" type="number" name="days_passed" id="days_passed_value"
+              placeholder="Days passed after last contact" required="required" min="0" />
+          </div>
+
+
+          <div><select class="form-control" name="job" id="job_value" required="required">
+              <option value="">Job</option>
+              <option value="0">Admin</option>
+              <option value="1">blue-collar</option>
+              <option value="2">entrepreneur</option>
+              <option value="3">housemaid</option>
+              <option value="4">management</option>
+              <option value="5">retired</option>
+              <option value="6">self-employed</option>
+              <option value="7">services</option>
+              <option value="8">student</option>
+              <option value="9">technician</option>
+              <option value="10">unemployed</option>
+            </select></div>
+
+
+
+          <div><select class="form-control" name="marital" id="marital_value" required="required">
+              <option class='top' value="">Marital Status</option>
+              <option value="0">Divorced</option>
+              <option value="1">Married</option>
+              <option value="2">Single</option>
+            </select></div>
+
+
+
+          <div><button type="submit" class="btn" onclick="">Predict</button> </div>
+
+
+        </form>
+      </div>
+
+      <div class="report">
+        <h1>Prediction Report</h1>
+
+        <div class="report-l">
+          <div>
+            <label for="age">Age:</label>
+          </div>
+
+          <div>
+            <label for="education">Education:</label>
+          </div>
+
+          <div>
+            <label for="balance">Balance:</label>
+          </div>
+
+          <div>
+            <label for="housing">Housing Loan:</label>
+          </div>
+
+          <div>
+            <label for="loan">Loan:</label>
+          </div>
+
+          <div>
+            <label for="duration">Call Duration:</label>
+          </div>
+  
+          <div>
+            <label for="contacted">Contact Count:</label>
+          </div>
+  
+          <div>
+            <label for="days_passed">Days passed after last contact:</label>
+          </div>
+  
+          <div>
+            <label for="job">Job:</label>
+          </div>
+  
+          <div>
+            <label for="marital">Marital Status:</label>
+          </div>
+
+        </div>
+
+
+        <div class="report-r">
+          <div>
+            <label id="age">{{ age_text }}</label>
+          </div>
+  
+          <div>
+            <label id="education">{{ education_text }}</label>
+          </div>
+  
+  
+          <div>
+            <label id="balance">{{ balance_text }}</label>
+          </div>
+  
+  
+          <div>
+            <label id="housing">{{ housing_text }}</label>
+          </div>
+  
+          
+          <div>
+            <label id="loan">{{ loan_text }}</label>
+          </div>
+  
+          <div>
+            <label id="duration">{{ duration_text }}</label>
+          </div>
+  
+          
+          <div>
+            <label id="contacted">{{ contacted_text }}</label>
+          </div>
+  
+          
+          <div>
+            <label id="days_passed">{{ days_passed_text }}</label>
+          </div>
+  
+          <div>
+            <label id="job">{{ job_text }}</label>
+          </div>
+          
+  
+          <div>
+            <label id="marital">{{ marital_text }}</label>
+          </div>
+
+        </div>
+
+      <label id="outcome">{{ prediction_text }}</label>
+        
+
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
