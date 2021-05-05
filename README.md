@@ -1,3 +1,3 @@
 Here is the flask implementation of Our prediction model.
 
-![Term_deposit_Prediction](https://user-images.githubusercontent.com/47264501/116280798-afc0f400-a7a6-11eb-8fdd-351a6c068067.gif)
+![Bank-Marketing-Prediction-Output](https://user-images.githubusercontent.com/47264501/117128444-08058080-adbb-11eb-83c9-89cbc3bde58e.gif)
