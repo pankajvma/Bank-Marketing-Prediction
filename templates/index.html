@@ -71,6 +71,12 @@
               placeholder="Days passed after last contact" required="required" min="0" />
           </div>
 
+          <div><select class="form-control" name="poutcome" id="job_value" required="required">
+            <option value="">Previous Outcome</option>
+            <option value="0">Unknown/Failure</option>
+            <option value="1">Success</option>
+          </select></div>
+
 
           <div><select class="form-control" name="job" id="job_value" required="required">
               <option value="">Job</option>
@@ -139,6 +145,10 @@
           <div>
             <label for="days_passed">Days passed after last contact:</label>
           </div>
+
+          <div>
+            <label for="poutcome">Outcome from Previous campaigns:</label>
+          </div>
   
           <div>
             <label for="job">Job:</label>
@@ -187,6 +197,10 @@
           
           <div>
             <label id="days_passed">{{ days_passed_text }}</label>
+          </div>
+
+          <div>
+            <label id="poutcome">{{ poutcome_text }}</label>
           </div>
   
           <div>
