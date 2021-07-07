@@ -1,0 +1,6 @@
+campaign                -0.051090
+pdays                    0.265953
+previous                 0.222721
+poutcome                 0.312580
+emp.var.rate            -0.293272
+cons.price.idx          -0.134182

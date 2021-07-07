@@ -44,7 +44,7 @@ def get_report(int_features):
 def home():
     return render_template('index.html', display_report = "none")
 
-@app.route('/',methods=['POST'])
+@app.route('/predict',methods=['POST'])
 def predict():
     '''
     For rendering results on HTML GUI
