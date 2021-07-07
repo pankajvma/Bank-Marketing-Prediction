@@ -9,7 +9,7 @@ import numpy as np
 app = Flask(__name__)
 
 
-@app.route('/predict', methods=['POST'])
+@app.route('/', methods=['POST'])
 def predict():
     if lr:
         try:
@@ -42,7 +42,7 @@ if __name__ == '__main__':
         port = int(sys.argv[1])  # This is for a command-line input
     except:
         #port = 12345  # If you don't provide any port the port will be set to 12345
-        port = 33507
+        port = 5000
 
     lr = joblib.load("model.pkl")  # Load "model.pkl"
     print('Model loaded')
