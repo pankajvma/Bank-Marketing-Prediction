@@ -8,24 +8,25 @@ import numpy as np
 # Your API definition
 app = Flask(__name__)
 
+model = joblib.load("model.pkl")  # Load "model.pkl"
+    
+model_columns = joblib.load("model_columns.pkl")    # Load "model_columns.pkl"
+
 
 @app.route('/', methods=['POST'])
 def predict():
     if model:
         try:
             json_ = request.json
-            # print(json_)
+
             query = pd.get_dummies(pd.DataFrame(json_))
 
-            # query = query.reindex(columns=model_columns, fill_value=0)
             query = query.reindex(columns=model_columns, fill_value=0)
-            # print(f'type {list(query.)}')
             query = query.values.tolist()
             print(query)
             prediction = list(model.predict(query))
-            # prediction = lr.predict(query)
             print(f"prediction {prediction}")
-            # print(lr.predict([[41,0,0,1.1,93.994,-36.4,4.857,5191.0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,1,1,0,0,0,1,0,1,0]]))
+
 
             return jsonify({'prediction': str(prediction)})
 
@@ -38,23 +39,4 @@ def predict():
 
 
 if __name__ == '__main__':
-    try:
-        port = int(sys.argv[1])  # This is for a command-line input
-    except:
-        #port = 12345  # If you don't provide any port the port will be set to 12345
-        port = 5000
-
-    model = joblib.load("model.pkl")  # Load "model.pkl"
-    print('Model loaded')
-    # Load "model_columns.pkl"
-    model_columns = joblib.load("model_columns.pkl")
-    print('Model columns loaded')
-
-    app.run(port=port, debug=True)
-
-# [
-#     {"Age": 85, "Sex": "male", "Embarked": "S"},
-#     {"Age": 24, "Sex": "female", "Embarked": "C"},
-#     {"Age": 3, "Sex": "male", "Embarked": "C"},
-#     {"Age": 21, "Sex": "male", "Embarked": "S"}
-# ]
+    app.run(port=5000, debug=True)
