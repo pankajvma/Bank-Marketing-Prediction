@@ -1,0 +1,204 @@
+{% include "header.html" %}
+  
+  <div class="container">
+    <h1 class="text-color">Single Query form</h1>
+    <p class = "mb-3 text-color">Please fill the form to get a Prediction.</p>
+
+
+    <form action="{{ url_for('predict') }}" method="GET">
+
+      <div class="row gy-5 scale">
+        <div class="col-md-3">
+          <div class="form-floating">
+            <input class="form-control in-color" type="number" id="age_value" name="age" placeholder="Age" required="required"
+            min="18" max="99" maxlength=3 />
+            <label for="age_value">Age</label>
+          </div>
+        </div>
+  
+        <div class="col-md-3">
+          <div class="form-floating">
+            <select class="form-select in-color" name="job" id="job_value" required="required">
+              <option selected value="">Select Job</option>
+                  <option value="admin.">Admin</option>
+                  <option value="blue-collar">Blue-collar</option>
+                  <option value="entrepreneur">Entrepreneur</option>
+                  <option value="management">Management</option>
+                  <option value="self-employed">Self-employed</option>
+                  <option value="services">Services</option>
+                  <option value="housemaid">Housemaid</option>
+                  <option value="technician">Technician</option>
+                  <option value="unemployed">Unemployed</option>
+                  <option value="retired">Retired</option>
+                  <option value="student">Student</option>
+                  <option value="unknown">Unknown</option>
+            </select>
+            <label for="job_value">Job</label>
+          </div>
+        </div>
+  
+        <div class="col-md-3">
+          <div class="form-floating">
+            <select class="form-select in-color" name="marital" id="marital_value" required="required">
+              <option selected value="">Choose Marital Status</option>
+              <option value="single">Single</option>
+              <option value="married">Married</option>
+              <option value="divorced">Divorced/Widowed</option>
+              <option value="unknown">Unknown</option>
+            </select>
+            <label for="marital_value">Marital Status</label>
+          </div>
+        </div>
+  
+        <div class="col-md-3">
+          <div class="form-floating">
+            <select class="form-select in-color" name="education" id="education_value" required="required">
+              <option selected value="">Select Education</option>
+              <option value="basic.4y">Basic 4 years</option>
+              <option value="basic.6y">Basic 6 years</option>
+              <option value="basic.9y">Basic 7 years</option>
+              <option value="high.school">High School</option>
+              <option value="university.degree">University Degree</option>
+              <option value="professional.course">Professional Course</option>
+              <option value="illiterate">Illiterate</option>
+              <option value="unknown">Unknown</option>
+            </select>
+            <label for="education_value">Education</label>
+          </div>
+        </div> 
+  
+        <div class="col-md-4">
+          <div class="form-floating">
+            <select class="form-select in-color" name="default" id="default_value" required="required">
+              <option selected value="">Does this Customer have credit?</option>
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+              <option value="unknown">Unknown</option>
+            </select>
+            <label for="default_value">Have Credit</label>
+          </div>
+        </div>
+  
+        <div class="col-md-4">
+          <div class="form-floating">
+            <select class="form-select in-color" name="housing" id="housing_value" required="required">
+              <option selected value="">Has the customer taken a Housing Loan?</option>
+              <option value="no">No</option>
+              <option value="yes">Yes</option>
+              <option value="unknown">Unknown</option>
+            </select>
+            <label for="housing_value">Housing Loan</label>
+          </div>
+        </div>
+  
+        <div class="col-md-4">
+          <div class="form-floating">
+            <select class="form-select in-color" name="loan" id="loan_value" required="required">
+              <option selected value="">Has the customer taken any Personal Loan?</option>
+              <option value="no">No</option>
+              <option value="yes">Yes</option>
+              <option value="unknown">Unknown</option>
+            </select>
+            <label for="loan_value">Loan</label>
+          </div>
+        </div>
+  
+        <div class="col-md-4">
+          <div class="form-floating">
+            <select class="form-select in-color" name="contact" id="contact_value" required="required">
+              <option selected value="">Which type of Cusstomer Contact do we have?</option>
+              <option value="cellular">Cellular</option>
+              <option value="telephone">Telephone</option>
+            </select>
+            <label for="contact_value">Contact Type</label>
+          </div>
+        </div>
+        
+        <div class="col-md-4">
+          <div class="form-floating">
+            <select class="form-select in-color" name="pdays" id="pdays_value" required="required">
+              <option selected value="">Customer contacted in any earlier campaign?</option>
+              <option value="0">No</option>
+              <option value="1">Yes</option>
+            </select>
+            <label for="pdays_value">Contacted before</label>
+          </div>
+        </div>
+  
+        <div class="col-md-4">
+          <div class="form-floating">
+            <select class="form-select in-color" name="poutcome" id="poutcome_value" required="required">
+              <option selected value="">What was the Outcome? (If Contacted Earlier)</option>
+              <option value="failure">Failure</option>
+              <option value="nonexistent">Non-existent</option>
+              <option value="success">Success</option>
+            </select>
+            <label for="poutcome_value">Previous Outcome</label>
+          </div>
+        </div>
+  
+  
+  
+        <div class="col-md-4">
+          <div class="form-floating">
+            <input class="form-control in-color" type="number" id="previous" name="previous" placeholder="Number of contacts before this Campaign." required="required"
+            min="0" max="20"  maxlength=2 />
+            <label for="previous">Number of Contacts before this Campaign</label>
+          </div>
+        </div>
+  
+        <div class="col-md-4">
+          <div class="form-floating">
+            <input class="form-control in-color" type="number" step="0.001" id="emp.var.rate_value" name="emp.var.rate" placeholder="Employment variation rate" required="required"/>
+            <label for="emp.var.rate_value">Employment variation rate</label>
+          </div>
+        </div>
+  
+  
+        <div class="col-md-4">
+          <div class="form-floating">
+            <input class="form-control in-color" type="number" step="0.001" id="cons.price.idx_value" name="cons.price.idx" placeholder="Consumer price index" required="required"/>
+            <label for="cons.price.idx_value">Consumer price index</label>
+          </div>
+        </div>
+  
+        <div class="col-md-4">
+          <div class="form-floating">
+            <input class="form-control in-color" type="number" step="0.001" id="cons.conf.idx_value" name="cons.conf.idx" placeholder="Consumer confidence index" required="required"/>
+            <label for="cons.conf.idx_value">Consumer confidence index</label>
+          </div>
+        </div>
+  
+        <div class="col-md-4">
+          <div class="form-floating">
+            <input class="form-control in-color" type="number" step="0.001" id="euribor3m_value" name="euribor3m" placeholder="euribor3m" required="required"/>
+            <label for="euribor3m_value">Euribor3m</label>
+          </div>
+        </div>
+        
+        <div class="col-md-4">
+          <div class="form-floating">
+            <input class="form-control in-color" type="number" step="0.001" id="nr.employed_value" name="nr.employed" placeholder="Number of employees" required="required"/>
+            <label for="nr.employed_value">Number of employees</label>
+          </div>
+        </div>
+  
+        <div class="col-md-5"></div>
+  
+        <div class="col-md-2">
+          <div class="form-floating">
+            <button type="submit" class="btn-lg btn-info position-absolute top-0 start-50 translate-middle text-color">Success</button>
+          </div>
+        </div>
+  
+        <div class="col-md-5"></div>
+  
+  
+      </div>
+
+    </form>
+
+  </div>
+
+</body>
+</html>

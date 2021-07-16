@@ -1,0 +1,135 @@
+{% include "header.html" %}
+  
+  <div class="container">
+    <h1 class="text-color">Prediction Report</h1>
+    <p class = "mb-3 text-color">Here is the report for your query.</p>
+
+    <div class="row gy-3 scale">
+      <div class="col-md-3">
+        <div class="form-floating pb-0">
+          <input class="form-control in-color" id="age_value" value= {{ age_text}} placeholder="Age" readonly/>
+          <label for="age_value">Age</label>
+        </div>
+      </div>
+         
+      <div class="col-md-3">
+        <div class="form-floating">
+          <input class="form-control in-color" id="job_value" value= {{ job_text}} placeholder="Job" readonly/>
+          <label for="job_value">Job</label>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="form-floating">
+          <input class="form-control in-color" id="marital_value" value= {{ marital_text }} placeholder="Job" readonly/>
+          <label for="marital_value">Marital Status</label>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="form-floating">
+          <input class="form-control in-color" id="education_value" value= {{ education_text }} placeholder="Job" readonly/>
+          <label for="education_value">Education</label>
+        </div>
+      </div> 
+
+      <div class="col-md-4">
+        <div class="form-floating">
+          <input class="form-control in-color" id="default_value" value= {{ default_text }} placeholder="Job" readonly/>
+          <label for="default_value">Have Credit</label>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-floating">
+          <input class="form-control in-color" id="housing_value" value= {{ housing_text }} placeholder="Job" readonly/>
+          <label for="housing_value">Housing Loan</label>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-floating">
+          <input class="form-control in-color" id="loan_value" value= {{ loan_text }} placeholder="Job" readonly/>
+          <label for="loan_value">Loan</label>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-floating">
+          <input class="form-control in-color" id="contact_value" value= {{ contact_text }} placeholder="Job" readonly/>
+          <label for="contact_value">Contact Type</label>
+        </div>
+      </div>
+      
+      <div class="col-md-4">
+        <div class="form-floating">
+          <input class="form-control in-color" id="pdays_value" value= {{ pdays_text }} placeholder="Job" readonly/>
+          <label for="pdays_value">Contacted before</label>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-floating">
+          <input class="form-control in-color" id="poutcome_value" value= {{ poutcome_text }} placeholder="Job" readonly/>
+          <label for="poutcome_value">Previous Outcome</label>
+        </div>
+      </div>
+          
+      <div class="col-md-4">
+        <div class="form-floating">
+          <input class="form-control in-color" id="previous" value= {{ previous_text }} placeholder="Job" readonly/>
+          <label for="previous">Number of Contacts before this Campaign</label>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-floating">
+          <input class="form-control in-color" id="emp.var.rate_value" value= {{ emp_var_rate_text }} placeholder="Job" readonly/>
+          <label for="emp.var.rate_value">Employment variation rate</label>
+        </div>
+      </div>
+
+
+      <div class="col-md-4">
+        <div class="form-floating">
+          <input class="form-control in-color" id="cons.price.idx_value" value= {{ cons_price_text }} placeholder="Job" readonly/>
+          <label for="cons.price.idx_value">Consumer price index</label>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-floating">
+          <input class="form-control in-color" id="cons.conf.idx_value" value= {{ cons_conf_idx_text }} placeholder="Job" readonly/>
+          <label for="cons.conf.idx_value">Consumer confidence index</label>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-floating">
+          <input class="form-control in-color" id="euribor3m_value" value= {{ euribor3m_text }} placeholder="Job" readonly/>
+          <label for="euribor3m_value">Euribor3m</label>
+        </div>
+      </div>
+        
+      <div class="col-md-4">
+        <div class="form-floating">
+          <input class="form-control in-color" id="nr.employed_value" value= {{ nr_employed_text }} placeholder="Job" readonly/>
+          <label for="nr.employed_value">Number of employees</label>
+        </div>
+      </div>
+
+      <div class="col-md-1"></div>
+
+      <div class="col-md-10">
+          <p class="text-center text-color fs-4 border">{{ prediction_text }}</p>
+      </div>
+
+      <div class="col-md-1"></div>
+
+
+    </div>
+
+  </div>
+
+</body>
+</html>

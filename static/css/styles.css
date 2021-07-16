@@ -1,111 +1,21 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Grand Hotel', cursive;
-}
-.overlay {
-  background-color: rgba(0, 0, 0, 0.8);
-  min-height: 100vh;
-  /* position:fixed; */
-  background-size: cover;
-  color: #fff;
-  z-index: 2;
-  font-size: 30px;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  text-align: center;
+.container-bg {
+  background-image: linear-gradient(to right, rgba(238, 130, 238, 0.7), rgba(76, 0, 130, 0.6), rgba(0, 0, 255, 0.6), rgba(0, 128, 0, 0.7));
 }
 
-/* .overlay {
-  position: fixed;
-  display: none;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0,0,0,1);
-  z-index: 2;
-  cursor: pointer;
-} */
-
-
-
-
-#service {
-  width: 100%;
-  min-height: 100vh;
-  background: url(services.jpeg);
-  background-attachment: fixed;
-  background-position:center;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-.form-control {
-  border: none;
-  width: 30%;
-  margin-bottom: 1%;
-  font-size: 24px;
-  height: 5vh;
-  border-radius: 8px;
-}
-.form-control {
-  text-transform: capitalize;
-  letter-spacing: 0.1rem;
-  font-family: 'Grand Hotel', cursive;
-}
-.form-control::placeholder {
-  font-family: 'Grand Hotel', cursive;
-  color: #102a42;
-  text-transform: capitalize;
-  letter-spacing: 0.1rem;
-  transform: translateX(1%);
-}
-.form-control:hover {
-  border: 3px solid black;
-}
-.btn {
-  width: 10%;
-  text-transform: capitalize;
-  font-size: 2rem;
-  border-radius: 10px;
+.in-color{
+  background-color: rgba(183, 0, 255, 0.2);
 }
 
-.report-l{
-  width: 50%;
-  float: left;
-  text-align: right;
+.text-color{
+  color: white
 }
 
-.report-r{
-  width: 50%;
-  float: left;
-  text-align: left;
-  padding-left: 2%;
+.nav-color{
+  background-image: linear-gradient(to right, rgba(238, 130, 238, 0.8), rgba(76, 0, 130, 0.7), rgba(0, 0, 255, 0.7), rgba(0, 128, 0, 0.8));
+  color: white
 }
 
-#outcome{
-  font-size: 30px;
-  font-weight: bold;
-  margin-top: 3%;
-  float: left;
-  width: 70%;
-  border: 3px solid;
-  padding: 5px;
-  margin-left: 15%;
-}
-
-.space{
-  float: left;
-  width: 10%;
-}
-
-.result{
-  font-size: 36px;
+.scale{
+  transform: scale(.9);
+  /* transform-origin: 0 0 0 0; */
 }

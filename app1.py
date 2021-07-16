@@ -1,76 +1,69 @@
 import numpy as np
-from flask import Flask, request, jsonify, render_template
-import pickle
+from flask import Flask, request, jsonify, render_template, json
+import requests
 
 app = Flask(__name__)
-model = pickle.load(open('model.pkl', 'rb'))
+# model = pickle.load(open('model.pkl', 'rb'))
 
-def get_full_data(form_input):
-    # form_input = [23, 1, 15, 125, 5, 1, 0, 0, 0]
+int_vars = ['age', 'pdays', 'previous']
+float_vars = ['cons.conf.idx', 'cons.price.idx', 'emp.var.rate', 'euribor3m', 'nr.employed']
 
-    add_data = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-    add_data[form_input[9]] = 1
-    add_data[form_input[10] + 11] = 1
+def get_data(data):
 
-    model_input = form_input[: 9]
-    model_input.extend(add_data)
+    education = data['education']
 
-    return model_input
+    education = education.replace(".", " ")
 
-def get_report(int_features):
-    age, edu_ind, bal, house_ind, loan_ind, dur, co_count, days_passed, poutcome_ind, job_ind, marital_ind = int_features
+    education = education.replace("y", " Years")
 
-    edu = ['Primary', 'Secondary', 'Tertiary']
-    house = ['No', 'Yes']
-    loan = ['No', 'Yes']
-    poutcome = ['Unknown/Failure', 'Success']
-    job = ['admin', 'blue-collar', 'entrepreneur', 'housemaid', 'management', 
-            'retired', 'self-employed', 'services', 'student', 'technician', 'unemployed']
+    poutcome = data['poutcome']
+    if poutcome == 'nonexistent': poutcome = 'Non-Existent' 
 
-    marital = ['Divorced', 'Married', 'Single']
+    pdays = data['pdays']
+    pdays = 'Yes' if pdays else 'No'
 
-    edu = edu[edu_ind-1]
-    house = house[house_ind]
-    loan = loan[loan_ind]
-    poutcome = poutcome[poutcome_ind]
-    job = job[job_ind]
-    marital = marital[marital_ind]
-
-    report = [age, edu, bal, house, loan, dur, co_count, days_passed, poutcome, job, marital]
-
-    return report
+    return [data['age'], data['job'], data['marital'], education, data['default'], 
+            data['housing'], data['loan'], data['contact'], pdays, data['previous'], poutcome, 
+            data['emp.var.rate'], data['cons.price.idx'], data['cons.conf.idx'], data['euribor3m'], data['nr.employed']]
 
 @app.route('/')
 def home():
-    return render_template('index.html', display_report = "none")
+    return render_template('index.html', title_text="Bank Marketing Prediction")
 
-@app.route('/predict',methods=['POST'])
+@app.route('/prediction_form')
+def prediction_form():
+    return render_template('predict.html', title_text="Get a Prediction")
+
+@app.route('/predict',methods=['GET'])
 def predict():
-    '''
-    For rendering results on HTML GUI
-    '''
-    int_features = [int(x) for x in request.form.values()]
+    json_ = [{x: y for x , y in request.args.items()}]
 
-    print(int_features) 
+    for i in int_vars:
+        json_[0][i] = int(json_[0][i])
 
-    all_int_features = get_full_data(int_features)
+    for i in float_vars:
+        json_[0][i] = float(json_[0][i])
 
-    print(all_int_features) 
+    # json_ = json.dumps(json_)
 
-    final_features = [np.array(all_int_features)]
-    prediction = model.predict(final_features)
+    data = json_[0]
 
+    age, job, marital, education, default, housing, loan, contact, pdays, previous, poutcome, emp_var_rate, cons_price_idx, cons_conf_idx, euribor3m, nr_employed = get_data(data)
+    
 
-    age, edu, bal, house, loan, dur, co_count, days_passed, poutcome, job, marital = get_report(int_features)
+    # resp = requests.request('GET', 'http://127.0.0.1:5000/', json = json_)
+    resp = requests.request('Post', 'https://bank-marketing-prediction.herokuapp.com/', json = json_)
+    
+    prediction = eval(resp.json()['prediction'])[0]
 
     output = 'is more likely to' if prediction == 1 else 'might not'
 
-    return render_template('index.html', age_text = age, education_text = edu, balance_text = bal, 
-                            housing_text = house, loan_text = loan, duration_text = dur, contacted_text = co_count, 
-                            days_passed_text = days_passed, poutcome_text = poutcome, job_text = job.title(), marital_text = marital,
-                            prediction_text= f'This customer {output} Subscribe to the Term Deposit.',
-                            display_term = "none", display_report="block")
+    return render_template('prediction.html', age_text = age, education_text = education.title(), previous_text = previous, 
+                            housing_text = housing.title(), loan_text = loan.title(), default_text = default.title(), contact_text = contact.title(), 
+                            pdays_text = pdays, poutcome_text = poutcome.title(), job_text = job.title(), marital_text = marital.title(),
+                           emp_var_rate_text = emp_var_rate, cons_price_text = cons_price_idx, cons_conf_idx_text = cons_conf_idx, euribor3m_text = euribor3m, 
+                           nr_employed_text = nr_employed, prediction_text= f'This customer {output} Subscribe to the Term Deposit.', title_text = "Prediction Report")
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, port=5010)
