@@ -3,7 +3,6 @@ from flask import Flask, request, jsonify, render_template, json
 import requests
 
 app = Flask(__name__)
-# model = pickle.load(open('model.pkl', 'rb'))
 
 int_vars = ['age', 'pdays', 'previous']
 float_vars = ['cons.conf.idx', 'cons.price.idx', 'emp.var.rate', 'euribor3m', 'nr.employed']
@@ -52,7 +51,7 @@ def predict():
     
 
     # resp = requests.request('GET', 'http://127.0.0.1:5000/', json = json_)
-    resp = requests.request('Post', 'https://bank-marketing-prediction.herokuapp.com/', json = json_)
+    resp = requests.request('GET', 'https://bank-marketing-prediction.herokuapp.com/', json = json_)
     
     prediction = eval(resp.json()['prediction'])[0]
 
@@ -66,4 +65,4 @@ def predict():
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5010)
+    app.run(debug=True, port=5000)
