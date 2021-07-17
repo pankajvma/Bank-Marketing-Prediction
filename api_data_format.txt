@@ -1,0 +1,62 @@
+The API takes data request in the following JSON format:
+
+[
+    {
+        "age": value,
+        "cons.conf.idx": value,
+        "cons.price.idx": value,
+        "contact": "value",
+        "default": "value",
+        "education": "value",
+        "emp.var.rate": value,
+        "euribor3m": value,
+        "housing": "value",
+        "job": "value",
+        "loan": "value",
+        "marital": "value",
+        "nr.employed": value,
+        "pdays": "value",               //Yes: 1, No: 0
+        "poutcome": "value",
+        "previous": value
+    }
+]
+
+Note: To get an idea about the string values (enclosed in double quotes) please refer to this web form https://bank-marketing-web-front.herokuapp.com/
+
+
+Example:
+[
+    {
+        "age": 41,
+        "cons.conf.idx": -50.8,
+        "cons.price.idx": 94.767,
+        "contact": "cellular",
+        "default": "no",
+        "education": "professional.course",
+        "emp.var.rate": -1.1,
+        "euribor3m": 1.039,
+        "housing": "yes",
+        "job": "technician",
+        "loan": "no",
+        "marital": "married",
+        "nr.employed": 4963.6,
+        "pdays": 0,
+        "poutcome": "nonexistent",
+        "previous": 0
+    }
+]
+
+
+As a response the API returns this json format. Here a single key will contain a list of values which is the response to their corresponding queries
+
+        {
+            "prediction": "[value, value, value, value, value, value, value...........]"
+        }
+
+   Note: The value can either be 0 (No) or 1 (Yes)
+
+Example:
+
+{
+    "prediction": "[1]"
+}
