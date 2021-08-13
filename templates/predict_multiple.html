@@ -1,0 +1,43 @@
+{% include "header.html" %}
+  
+  <div class="container">
+    <h1 class="text-color">Multiple Prediction</h1>
+    <h5 class = "mb-3 text-color">Please read the instructions below to get the subscriber prediction.</h5>
+
+    <div class="row gy-5">
+      <div class="col-md-12">
+
+        <ul class = "fs-5 text mb-3 text-color">
+          <li>To get multiple predictions you have to upload the customer data in the prescribed CSV format.</li>
+          <li>Please get the CSV from <a class="text-color" href="{{ url_for('get_csv') }}">here</a>.</li>
+          <li>Please read the <a class="text-color" href="{{ url_for('get_readme') }}"> instructions in this file</a> before filling the CSV.</li>
+          <li>After filling the CSV please upload the file below and wait till your predictions are generated.</li>
+        </ul>
+      </div>
+
+      <div class="col-md-12">
+        <p class = "mb-0 fs-5 text-color text-center">To get a Prediction please click the button below.</p>
+      </div>
+
+      <div class="col-md-4"></div>
+
+      <div class="col-md-4">
+
+          <form action="/transform" method="post" enctype="multipart/form-data">
+            <div class="input-group mb-3">
+              <input type="file" class="form-control" name="data_file" id="inputGroupFile" required>
+              <button type="submit" class="input-group-text btn btn-success" for="inputGroupFile">Get Predictions</button>
+            </div>
+          </form>
+      </div>
+
+      <div class="col-md-4"></div>
+
+      
+
+    </div>
+
+  </div>
+
+</body>
+</html>

@@ -5,8 +5,8 @@
 
     <div class="row gy-5">
       <div class="col-md-12">
-        <p class = "mb-3 fs-5 text-color">This Web interface is designed to work as a medium between our ML Model and the user. The ML model is developed for customer targeting in a Bank Marketing Campaign. It takes several inputs from the user and tries to predict whether a Customer can be a potential subscriber of a term deposit that is being offered by the bank.</p>
-        <p class = "mb-3 fs-5 text-color">After receiving the input query/queries from the user this Web Interface transfer the query to the API in which our ML model is implemented. The API in return gives us the prediction which is then displayed on the interface.</p>
+        <p class = "fs-5 text mb-3 text-color">This Web interface is designed to work as a medium between our ML Model and the user. The ML model is developed for customer targeting in a Bank Marketing Campaign. It takes several inputs from the user and tries to predict whether a Customer can be a potential subscriber of a term deposit that is being offered by the bank.</p>
+        <p class = "fs-5 text mb-3 text-color">After receiving the input query/queries from the user this Web Interface transfer the query to the API in which our ML model is implemented. The API in return gives us the prediction which is then displayed on the interface.</p>
       </div>
 
       <div class="col-md-12">
@@ -17,7 +17,7 @@
 
       <div class="col-md-4">
         <div class="form-floating">
-          <a role="button" href="{{ url_for('prediction_form') }}" class="btn-lg btn-info position-absolute top-0 start-50 translate-middle text-color text-decoration-none">Single Query</a>
+          <a role="button" href="{{ url_for('prediction_form') }}" class="btn btn-info position-absolute top-0 start-50 translate-middle text-color text-decoration-none">Single Query</a>
         </div>
       </div>
 
@@ -27,21 +27,15 @@
         <p class = "mb-0 fs-5 text-color text-center">To get a Multiple predictions please click the button below.</p>
       </div>
 
-      <div class="col-md-4"></div>
-
-      <div class="col-md-4">
+      <div id="alert-div" class="col-md-12">
         <div class="form-floating">
-          <a role="button" onclick="show_alert()" href=# class="btn-lg btn-success position-absolute top-0 start-50 translate-middle text-color text-decoration-none">Multiple Prediction</a>
+          <a role="button" href="{{ url_for('prediction_multiple') }}" class="btn btn-success position-absolute top-0 start-50 translate-middle text-color text-decoration-none">Multiple Queries</a>
         </div>
+        
       </div>
 
-      <div class="col-md-4"></div>
-
       <div class="col-md-12">
-        <div id="alert" class="alert alert-danger alert-dismissible fade" role="alert">
-          <strong>Oops!</strong> This feature is still under development.
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
+        
 
       </div>
 
@@ -50,10 +44,4 @@
   </div>
 
 </body>
-  <script>
-    function show_alert(){
-      var element = document.getElementById("alert").classList;
-      element.add('show');
-    } 
-  </script>
 </html>
